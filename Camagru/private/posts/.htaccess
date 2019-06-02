@@ -1,0 +1,31 @@
+###FILTRE CONTRE CERTAINS ROBOTS DES PIRATES
+RewriteEngine On
+## EXCEPTION: TOUS LES ROBOTS MEMES ANONYMES OU BANNIS PEUVENT ACCEDER A CES FICHIERS
+RewriteCond %{REQUEST_URI} !^/robots.txt
+RewriteCond %{REQUEST_URI} !^/sitemap.xml
+##
+RewriteCond %{HTTP_USER_AGENT} ^-?$ [OR] ## ANONYMES
+RewriteCond %{HTTP_USER_AGENT} ^curl|^Fetch\ API\ Request|GT::WWW|^HTTP::Lite|httplib|^Java|^LeechFTP|lwp-trivial|^LWP|libWeb|libwww|^PEAR|PECL::HTTP|PHPCrawl|PycURL|python|^ReGet|Rsync|Snoopy|URI::Fetch|urllib|WebDAV|^Wget [NC] ## BIBLIOTHEQUES / CLASSES HTTP DONT ON NE VEUT PAS. ATTENTION, CELA PEUT BLOQUER CERTAINES FONCTIONS DE VOTRE CMS. NE PAS TOUT EFFACER, MAIS CHERCHEZ LE NOM DE LA CLASSE HTTP CONCERNEE (DEMANDEZ AUX DEVELOPPEURS DE VOTRE CMS). CETTE LISTE BLOQUE 80% DES ROBOTS SPAMMEURS. IL FAUT LA CONSERVER.
+RewriteCond %{HTTP_USER_AGENT} ^[bcdfghjklmnpqrstvwxz\ ]{10,}|^[0-9a-z]{15,}|^[0-9A-Za-z]{19,}|^[A-Za-z]{3,}\ [a-z]{4,}\ [a-z]{4,} [OR] ## CEUX QUI INVENTENT DES NOMS AU HASARD, RETIREZ LES 2 DIESES EN DEBUT DE LIGNE POUR L'ACTIVER
+RewriteRule (.*) - [F]
+### SEUL LE FICHIER index.php EST SERVI COMME PREMIER FICHIER PAR DEFAUT. LES AUTRES SONT INTERDITS
+DirectoryIndex index.php
+
+### INTERDIRE LES AUTRES TYPES DE FICHIER INDEX
+<Files ~ "^(index)\.(p?s?x?htm?|txt|aspx?|cfml?|cgi|pl|php[3-9]|jsp|xml)$">
+order allow,deny
+deny from all
+</Files>
+
+### INTERDIRE L'AFFICHAGE DE CERTAINS FORMATS DE FICHIER
+### EXÉCUTÉS PAR LE SERVEUR MAIS INTERDIT D'AFFICHAGE PAR LE NAVIGATEUR WEB
+<Files ~ "\.(inc|class|sql|ini|conf|exe|dll|bin|tpl|bkp|dat|c|h|py|spd|theme|module|mdb|rar|bash|git|hg|log|svn|swp|cvs)$">
+deny from all
+</Files>
+
+### INTERDIRE L'AFFICHAGE DE CERTAINS FICHIERS COMME config, option, login, setup, install, admin, home, default, xmlrpc.
+### A ADAPTER SI CELA POSE PROBLEME, NOTAMMENT RETIREZ wp-(login|admin|config)| SI VOUS UTILISEZ WORDPRESS
+<Files ~ "^(wp-(creat_account|admin|config)|config(\.inc)?|install?|admin|user|login|configure|configuration|options?\.inc|option|settings?(\.inc)?|functions?(\.inc)?|setup(\.inc)?|readme|changelog|default|home|xmlrpc|bigdump|uploadTester|errors?|test|data|members?|hacke?r?d?|[-_a-z0-9.]*mafia[-_a-z0-9.]*|[-_a-z0-9.]*power[-_a-z0-9.]*|[-_a-z0-9.]*jihad[-_a-z0-9.]*|php|shell|ssh|root|cmd|[0-9]{1,6})\.(p?s?x?htm?l?|txt|aspx?|cfml?|cgi|pl|php[3-9]{0,1}|jsp?|sql|xml)$">
+order allow,deny
+deny from all
+</Files>

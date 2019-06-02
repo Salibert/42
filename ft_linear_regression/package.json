@@ -1,0 +1,56 @@
+{
+  "name": "linear-regression",
+  "version": "0.1.0",
+  "private": true,
+  "main": "public/electron.js",
+  "homepage": "./",
+  "dependencies": {
+    "antd": "^3.12.3",
+    "electron-is-dev": "^1.0.1",
+    "react": "^16.7.0",
+    "react-bootstrap": "^0.32.4",
+    "react-csv": "^1.0.19",
+    "react-csv-reader": "^1.2.1",
+    "react-dom": "^16.7.0",
+    "react-scripts": "2.1.3",
+    "recharts": "^1.4.2"
+  },
+  "build": {
+    "appId": "nonExistentID",
+    "mac": {
+      "target": "zip"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-start": "electron .",
+    "start-dev": "concurrently \"BROWSER=none npm run start\" \"wait-on http://localhost:3000 && electron .\"",
+    "preelectron-pack": "npm run build",
+    "electron-pack": "electron-builder"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "electron": "^4.0.1",
+    "electron-builder": "^20.38.5",
+    "wait-on": "^3.2.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

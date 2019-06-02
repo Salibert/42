@@ -1,0 +1,11 @@
+push int32(2)
+push int32(3)
+pow
+dump
+push int32(2)
+while (2)
+mul
+mul
+mul
+dump
+exit

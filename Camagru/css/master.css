@@ -1,0 +1,139 @@
+.flash-bad{
+  padding: 20px;
+  background-color: #c0392b;
+  color: white;
+}
+.flash-good{
+  padding: 20px;
+  background-color: #27ae60;
+  color: white;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.flash {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.flash:hover{
+    color: black;
+}
+.header{
+  width: 100%;
+  height: 8%;
+  background-color: #8aafaf;
+  padding-bottom: 0.5%;
+  padding-top: 0.5%;
+}
+
+div.gallery {
+    float: left;
+    background-color: #FFFFFF;
+    width: 15%;
+    padding: 10px;
+    align-content: center;
+}
+
+div.gallery_image {
+  border: 1px solid #f6caaa;
+  float: right;
+  width: 8vw;
+  padding: 20px;
+}
+
+div.gallery_image:hover {
+    border: 1px solid #777;
+}
+
+div.gallery video{
+  width 50%;
+  height:auto;
+}
+div.gallery canvas{
+    width 1px;
+    height auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+input[type=text], select {
+    width: 10;
+    padding: 8px 10px;
+    position:  right;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=password], select {
+    width: 10;
+    padding: 8px 10px;
+    position:  right;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 10;
+    background-color: #af8aaf;
+    color: white;
+    padding: 5px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #af8a77;
+}
+
+.cam{
+  display:inline-block;
+  background-color:white;
+  margin-left: 20%;
+  margin-top: 5%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: black;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #ccc;
+}
+
+.footer {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;
+}

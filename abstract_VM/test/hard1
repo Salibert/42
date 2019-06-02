@@ -1,0 +1,43 @@
+push int32(2)
+push int32(3)
+dump
+add
+dump
+while (3)
+dump
+mul
+dump
+mul
+dump
+mul
+dump
+push int8(1)
+pow
+dump
+push int8(41)
+add
+dump
+push double(42.42)
+sub
+dump
+push int32(100)
+mul
+push double(2147483648)
+add
+dump
+pop
+push int8(42)
+dump
+print
+;sub
+;dump
+;push float(42.42)
+;mul
+;dump
+;sub
+;dump
+;push int32(42)
+;dump; int32(43)
+;pop; This is a comment
+;assert double(42.42)
+exit

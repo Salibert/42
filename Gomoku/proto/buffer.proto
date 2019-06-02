@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package gomokuBuffer;
+
+message Node {
+    int32 X = 1;
+    int32 Y = 2;
+    int32 Player = 3;
+}
+
+message ConfigRules {
+    int32 PlayerIndexIA = 1;
+    bool IsActiveRuleFreeThree = 2;
+    bool IsActiveRuleCapture = 3;
+    bool IsActiveRuleAlignment = 4;
+    bool IsActiveRuleWin = 5;
+    bool IsActiveRuleBlock = 6;
+    bool IsActiveRuleProbableCapture = 7;
+    bool IsActiveRuleAmbientSearch = 8;
+    bool IsActiveHelperPlayer = 9;
+    int32 DepthIA = 10;
+}
+
+service Game {
+    rpc CDGame(CDGameRequest) returns (CDGameResponse) {} /* simple RPC */
+    rpc Played(StonePlayed) returns (StonePlayed) {} /* simple RPC */
+    rpc PlayedHelp(StonePlayed) returns (StonePlayed) {} /* simple RPC */
+    rpc CheckRules(StonePlayed) returns (CheckRulesResponse) {}
+}
+
+message CDGameRequest {
+    string GameID = 1;
+    ConfigRules Rules = 2;
+    bool Delete = 3;
+}
+
+message CheckRulesResponse {
+    bool IsPossible = 1;
+    repeated Node Captured = 2;
+    int32 NbStonedCaptured = 3;
+    bool PartyFinish = 4;
+    int32 IsWin = 5;
+}
+
+message CDGameResponse {
+    bool IsSuccess = 1;
+    string Message = 2;
+}
+
+message StonePlayed {
+    Node CurrentPlayerMove = 1;
+    string GameID = 2;
+}
